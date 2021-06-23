@@ -1,0 +1,47 @@
+version: '3.7'
+
+networks:
+  iot-net-sandbox:
+    name: iot-net-sandbox
+    driver: bridge      
+
+services:
+  homeassistant:
+    container_name: home-assistant-sandbox
+    image: homeassistant/home-assistant:latest
+    ports:
+      - "8124:8123"
+    volumes:
+      - ./sandbox/homeassistant/config:/config
+    networks: 
+      - iot-net-sandbox
+    environment:
+      - TZ=Europe/Oslo 
+    restart: unless-stopped
+  mqtt:
+    container_name: mqtt-sandbox
+    image: eclipse-mosquitto:1.6.14
+    ports:
+      - "1884:1883"
+    volumes:
+      - ./sandbox/mosquitto/config:/mosquitto/config
+      - ./sandbox/mosquitto/log:/mosquitto/log
+      - ./sandbox/mosquitto/data/:/mosquitto/data
+    networks: 
+      - iot-net-sandbox   
+    restart: unless-stopped
+  esphome:
+    container_name: esphome-sandbox
+    image: esphome/esphome:latest
+    privileged: true
+    ports:
+      - "6054:6052"
+    volumes:
+      - ./sandbox/esphome/config:/config
+    # devices: 
+    #   - /dev/ttyUSB0:/dev/ttyUSB0
+    networks:
+      - iot-net-sandbox
+    environment:
+      - ESPHOME_DASHBOARD_USE_PING=true   
+    restart: unless-stopped

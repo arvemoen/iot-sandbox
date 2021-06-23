@@ -1,0 +1,5 @@
+- platform: ping
+  host: !secret ip_xxx
+  name: XXX
+  count: 2
+  scan_interval: 300

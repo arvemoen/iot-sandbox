@@ -1,0 +1,10 @@
+# # New version of Home Assistant is available
+# - alias: "Update notifications"
+#   trigger:
+#     platform: state
+#     entity_id: binary_sensor.updater
+#   action:
+#     service: notify.mobile_app_xxxx
+#     data_template:
+#       title: Ny hass vesion
+#       message: "Home Assistant {{ state_attr('binary_sensor.updater', 'newest_version') }} er tilgjengelig"

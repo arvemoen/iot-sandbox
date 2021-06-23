@@ -1,0 +1,6 @@
+# Global customization
+  
+# Customize entities matching a pattern
+# "binary_sensor.*battery_alarm":  
+#   device_class: battery
+#   state-color: true
