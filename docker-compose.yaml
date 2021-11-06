@@ -20,7 +20,7 @@ services:
     restart: unless-stopped
   mqtt:
     container_name: mqtt-sandbox
-    image: eclipse-mosquitto:1.6.14
+    image: eclipse-mosquitto:latest
     ports:
       - "1883:1883"
     volumes:
