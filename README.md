@@ -3,7 +3,7 @@
 
 Spin up the containers by running: `docker-compose up -d`
 
-Home assistant: `http://localhost.8123`
-Esphome:  `http://localhost:6052`
-Mosquitto (mqtt) at port:  `1883`
+Home assistant: `http://localhost:8123` <br>
+Esphome:  `http://localhost:6052` <br>
+Mosquitto (mqtt) at port: `1883`
 
